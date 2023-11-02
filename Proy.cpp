@@ -7,7 +7,6 @@ struct Product {
     string name;
     float price;
     int quantity;
-    int id;
 };
 
 int Agregar(vector<Product> &products);
