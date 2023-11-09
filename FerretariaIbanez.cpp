@@ -71,7 +71,7 @@ int Add(vector<Product> &products) { // Ingreso de productos para ello se aporta
     cout << "\n=== Menú de Agregar Productos ===" << endl;
     cout << "¿Cuántos productos desea agregar?: ";
     cin >> n;
-    cin.ignore(); // Cuando se recibe el numero de producto se piderán los datos
+    cin.ignore(); // Cuando se recibe el numero de producto se pedirán los datos
 
     if (n <= 0) {
         cout << "Cantidad inválida. Debes ingresar al menos un producto." << endl;
