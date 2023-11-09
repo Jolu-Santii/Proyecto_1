@@ -6,15 +6,15 @@ using namespace std;
 struct Product { //definimos propiedades de cada producto, los cuales solo poseen: 
     string name; // nombre de producto
     float price; // precio de producto
-    int quantity; // cantidad de produto 
+    int quantity; // cantidad de producto 
 };
 
 int Add(vector<Product> &products); // Ingreso de productos para ello se aportan ciertos datos
 void Search(const vector<Product> &products); // Búsqueda de producto de acuerdo a su identificador único(nombre)
 int Remove(vector<Product> &products); // Eliminación de productos en inventario, se proporciona el identificador único(nombre)
 void Order(vector<Product> &products); // Ordenador de productos, nos permite a ejecutar la búsqueda binaria
-int BinarySearch(const vector<Product> &products, const string &temp); // Búsqueda binaria, nos permite dar continuidad a busqueda y eliminación de productos.
-void Inventory(const vector<Product> &products);  // Inventario, continue el cátalogo de productos
+int BinarySearch(const vector<Product> &products, const string &temp); // Búsqueda binaria, nos permite dar continuidad a búsqueda y eliminación de productos.
+void Inventory(const vector<Product> &products);  // Inventario, continue el catálogo de productos
 
 int main() {
     int opt;
@@ -171,7 +171,7 @@ int BinarySearch(const vector<Product> &products, const string &temp) { // Búsq
     return -1; // No se encontro producto.
 }
 
-void Inventory(const vector<Product> &products) { // Inventario, continue el cátalogo de productos
+void Inventory(const vector<Product> &products) { // Inventario, continue el catálogo de productos
     cout << "\n===== Inventario de productos =====" << endl; // Mostramos el inventario 
     cout << "Productos registrados: " << products.size() << endl;
 
