@@ -14,7 +14,7 @@ void Search(const vector<Product> &products); // Búsqueda de producto de acuerd
 int Remove(vector<Product> &products); // Eliminación de productos en inventario, se proporciona el identificador único(nombre)
 void Order(vector<Product> &products); // Ordenador de productos, nos permite a ejecutar la búsqueda binaria
 int BinarySearch(const vector<Product> &products, const string &temp); // Búsqueda binaria, nos permite dar continuidad a busqueda y eliminación de productos.
-void Inventory(const vector<Product> &products);  // Inventario, continie el cátalogo de productos
+void Inventory(const vector<Product> &products);  // Inventario, continue el cátalogo de productos
 
 int main() {
     int opt;
