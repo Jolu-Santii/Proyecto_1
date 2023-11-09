@@ -3,25 +3,25 @@
 #include <vector>
 using namespace std;
 
-struct Product {
-    string name;
-    float price;
-    int quantity;
+struct Product { //definimos propiedades de cada producto, los cuales solo poseen: 
+    string name; // nombre de producto
+    float price; // precio de producto
+    int quantity; // cantidad de produto 
 };
 
-int Agregar(vector<Product> &products);
-void buscar(const vector<Product> &products);
-int eliminar(vector<Product> &products);
-void ordenar(vector<Product> &products);
-int BusqBin(const vector<Product> &products, const string &temp);
-void catalogo(const vector<Product> &products);
+int Add(vector<Product> &products); // Ingreso de productos para ello se aportan ciertos datos
+void Search(const vector<Product> &products); // Búsqueda de producto de acuerdo a su identificador único(nombre)
+int Remove(vector<Product> &products); // Eliminación de productos en inventario, se proporciona el identificador único(nombre)
+void Order(vector<Product> &products); // Ordenador de productos, nos permite a ejecutar la búsqueda binaria
+int BinarySearch(const vector<Product> &products, const string &temp); // Búsqueda binaria, nos permite dar continuidad a busqueda y eliminación de productos.
+void Inventory(const vector<Product> &products);  // Inventario, continie el cátalogo de productos
 
 int main() {
     int opt;
-    vector<Product> products;
+    vector<Product> products; // products, es aquel vector que permite el almacenamiento de los n productos.
 
     do {
-        cout << "\n====== Ferreteria Estefi ======" << endl;
+        cout << "\n====== Ferreteria Ibáñez ======" << endl;
 
         cout << "\n=== Menú principal ===" << endl;
         cout << "1. Agregar producto" << endl;
@@ -33,29 +33,29 @@ int main() {
         cout << "Ingrese una de las cuatro opciones: ";
         cin >> opt;
 
-        switch (opt) {
+        switch (opt) {  // Recibimos la opción a elegir y de acuerdo a ello, ejecutamos aquella acción. 
             case 1: {
-                Agregar(products);
-                ordenar(products);
+                Add(products);
+                Order(products);
                 break;
             }
             case 2: {
-                buscar(products);
+                Search(products);
                 break;
             }
             case 3: {
-                eliminar(products);
+                Remove(products);
                 break;
             }
             case 4: {
-                catalogo(products);
+                Inventory(products);
                 break;
             }
-            case 5: {
+            case 5: { // Salida del programa
                 cout << "Saliendo del programa. Hasta luego." << endl;
                 break;
             }
-            default: {
+            default: { // La opción no esta disponible, retornamos mensaje. 
                 cout << "Opción no válida, intente de nuevo" << endl;
                 break;
             }
@@ -65,20 +65,21 @@ int main() {
     return 0;
 }
 
-int Agregar(vector<Product> &products) {
-    int n;
+int Add(vector<Product> &products) { // Ingreso de productos para ello se aportan ciertos datos
+    int n; // los cuales son nombre, precio, y cantidad disponible. 
 
     cout << "\n=== Menú de Agregar Productos ===" << endl;
     cout << "¿Cuántos productos desea agregar?: ";
     cin >> n;
-    cin.ignore(); 
+    cin.ignore(); // Cuando se recibe el numero de producto se piderán los datos
 
     if (n <= 0) {
         cout << "Cantidad inválida. Debes ingresar al menos un producto." << endl;
-        return 0;
+        return 0;  // Ejecución fallida, retornamos la cantidad de productos ingresados( 0 productos )
+        // , por ende no hay actualización del inventario. 
     }
 
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i) { // Estamos pidiendo los datos para el nuevo producto
         Product product;
         cout << "\nProducto " << i + 1 << endl;
         cout << "Ingrese el nombre del producto " << i + 1 << ": ";
@@ -90,29 +91,30 @@ int Agregar(vector<Product> &products) {
         cout << "Ingresa la cantidad disponible del producto " << i + 1 << ": ";
         cin >> product.quantity;
 
-        products.push_back(product);
+        products.push_back(product); // Se ha registrado el nuevo producto 
     }
 
-    return n;
+    return n; // Ejecución exitosa, retornamos la cantidad de productos (n productos) para la actualización del inventario(products)
 }
 
-void buscar(const vector<Product> &products) {
+void Search(const vector<Product> &products) { // Búsqueda de producto de acuerdo a su identificador único(nombre)
     string temp;
 
     cout << "\nIngrese el nombre del producto que desea buscar (No se aceptan caracteres especiales): ";
     cin.ignore();
     getline(cin, temp);
 
-    int pos = BusqBin(products, temp);
+    int pos = BinarySearch(products, temp); // se ha recibido el producto, lo buscamos en el inventario aplicando busqueda binaria
 
-    if (pos == -1) {
+    if (pos == -1) { // Producto no encontrado
         cout << "\nNo se encontró el producto, intente de nuevo\n" << endl;
-    } else {
-        cout << endl << products[pos].name << endl << "Precio: $" << products[pos].price << endl << "Cantidad: " << products[pos].quantity << endl;
+    } else {  // Producto encontrado, mostramos datos
+        cout << "\n=== Producto " << products[pos].name << " ===";
+        cout << endl << " Precio: $" << products[pos].price << endl << " Cantidad: " << products[pos].quantity << endl;
     }
 }
 
-int eliminar(vector<Product> &products) {
+int Remove(vector<Product> &products) {
     int num;
     string temp;
 
@@ -124,7 +126,7 @@ int eliminar(vector<Product> &products) {
         cout << "\nIngrese el nombre del producto que desea borrar (No se aceptan caracteres especiales): ";
         getline(cin, temp);
 
-        int pos = BusqBin(products, temp);
+        int pos = BinarySearch(products, temp);
 
         if (pos == -1) {
             cout << "\nNo se encontró el producto, intente de nuevo" << endl;
@@ -137,7 +139,7 @@ int eliminar(vector<Product> &products) {
     return products.size();
 }
 
-void ordenar(vector<Product> &products) {
+void Order(vector<Product> &products) {
     for (int i = 1; i < products.size(); ++i) {
         Product key = products[i];
         int j = i - 1;
@@ -151,7 +153,7 @@ void ordenar(vector<Product> &products) {
     }
 }
 
-int BusqBin(const vector<Product> &products, const string &temp) {
+int BinarySearch(const vector<Product> &products, const string &temp) {
     int left = 0, right = products.size() - 1;
 
     while (left <= right) {
@@ -169,8 +171,8 @@ int BusqBin(const vector<Product> &products, const string &temp) {
     return -1;
 }
 
-void catalogo(const vector<Product> &products) {
-    cout << "\n===== Catálogo de productos =====" << endl;
+void Inventory(const vector<Product> &products) {
+    cout << "\n===== Inventario de productos =====" << endl;
     cout << "Productos registrados: " << products.size() << endl;
 
     cout << "\n  Nombre" << "\t\t| Precio" << "\t| Cantidad" << endl;
