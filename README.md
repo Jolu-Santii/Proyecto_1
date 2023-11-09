@@ -7,8 +7,8 @@
 ## Índice
 
 - [Presentación](#Presentación)
-- [Objetivos en funcionalidades](#Objetivos)
-- [Funcionalidades del Proyecto](#Funcionalidades)
+- [Objetivos en funcionalidades](#Objetivos-en-funcionalidades)
+- [Funcionalidades del Proyecto](#Funcionalidades-del-proyecto)
 - [Miembros](#Miembros)  
 
 ## Presentación
