@@ -171,7 +171,7 @@ int BinarySearch(const vector<Product> &products, const string &temp) { // Búsq
     return -1; // No se encontro producto.
 }
 
-void Inventory(const vector<Product> &products) { // Inventario, continie el cátalogo de productos
+void Inventory(const vector<Product> &products) { // Inventario, continue el cátalogo de productos
     cout << "\n===== Inventario de productos =====" << endl; // Mostramos el inventario 
     cout << "Productos registrados: " << products.size() << endl;
 
