@@ -137,7 +137,7 @@ int Remove(vector<Product> &products) { // Eliminación de productos en inventar
     }
 
     return products.size(); // retornamos el tamaño de products para que el invetario sea nuevamente actualizado
-    // cuando este mencionado sea ordenado. 
+    // cuando este mencionado sea utilizada en las funciones del programa.
 }
 
 void Order(vector<Product> &products) { // Ordenador de productos, nos permite a ejecutar la búsqueda binaria
